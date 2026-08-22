@@ -1,0 +1,10 @@
+-- Supplier company-profile fields that were previously display-only demo values.
+alter table accounts add column if not exists alt_email text;
+alter table accounts add column if not exists landline text;
+alter table accounts add column if not exists legal_form text;
+alter table accounts add column if not exists warehouse text;
+alter table accounts add column if not exists fleet text;
+alter table accounts add column if not exists banker text;
+alter table accounts add column if not exists payment_terms text;
+alter table accounts add column if not exists memberships text;
+alter table accounts add column if not exists certifications text;

@@ -1,0 +1,29 @@
+BUBU.Market clean installation order
+
+NEW SUPABASE PROJECT
+1. Run FINAL_REBUILD.sql once in the SQL Editor.
+2. Run supabase/migrations/0017_buyer_profile_retry.sql.
+3. Run supabase/migrations/0018_product_interests.sql.
+4. Run supabase/migrations/0019_quote_chat_supplier_profile.sql.
+5. Run supabase/migrations/0020_admin_directory_media.sql.
+6. Authentication -> Sign In / Providers -> Email: enable Email/password.
+7. Disable Confirm email for the current development build and save.
+8. Authentication -> Users -> Add user:
+   Email: nidhi@bubumarket.com
+   Password: Bubu@2027
+   Auto-confirm: enabled
+9. Run database/CREATE_NIDHI_ADMIN.sql once.
+10. Enter the new Supabase Project URL and publishable/anon key in supabase-config.js.
+11. Upload the CONTENTS of this package to the web host.
+
+REUSING AN OLD SUPABASE PROJECT
+1. Empty/delete the media bucket using Supabase Storage.
+2. Run FINAL_RESET.sql once.
+3. Continue with the NEW SUPABASE PROJECT steps above.
+
+DO NOT run FINAL_RESET.sql after the application is in use.
+Do not skip or reorder migrations 0017 through 0020.
+
+Development-only universal OTP: 079757
+Default platform password: Bubu@2026
+Nidhi admin password: Bubu@2027
