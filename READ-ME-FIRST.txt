@@ -1,0 +1,58 @@
+BUBU.Market — full retest build, 23 August 2026
+
+NO SQL. Four files, all to the repo root, all replacing what is there:
+
+  index.html   m.html   device-routing.js   supabase-adapter.js
+
+Nothing to edit by hand; index.html already loads the device routing.
+
+WHAT THE RETEST COVERED, against the live database
+
+  Registration   Created a real buyer account through the form.
+  Sign-in        Fresh session for that account; wrong passwords rejected.
+  Search         Live listings; opened the real Octagonal pole product.
+  Quote request  New "Request a quote" button on the listing writes a
+                 requirement and opens a conversation with the supplier.
+  Post           Posted a requirement; it appeared under My requirements.
+  Chat           Opened the conversation, sent a message, saw it persist.
+  Admin          Queue, members, full member record, categories with photo.
+  Cleanup        Every test row was deleted afterwards.
+
+BUGS THE RETEST CAUGHT AND FIXED
+
+  Registration called the profile function with the wrong parameter names,
+  so no one could register on mobile. Fixed, and a half-finished attempt
+  (auth user created, profile not) now resumes instead of dead-ending on
+  "User already registered".
+
+  A posted requirement did not appear under My requirements until the next
+  full reload. The list now refreshes itself.
+
+  Districts with spaces (Fort Portal) produced an id the database does not
+  use. The id now comes from the real districts table.
+
+  The chat header told a BUYER "Wants to buy …" about their own request.
+  Buyers now see "About …"; suppliers keep "Wants to buy …".
+
+  Failed connections during register/post no longer pretend to succeed.
+
+NEW THIS ROUND
+
+  Request a quote   Primary button on every listing.
+  Call / WhatsApp   On a listing, these now reveal the supplier's real
+                    number through the same reveal the website uses.
+  Messages          Buyers reach their conversations from Account ->
+                    Messages. (The tab bar keeps Quotes; chats about a
+                    quote are one tap from either place.)
+
+CAMERA
+
+  Every photo point uses accept="image/*" capture="environment", the
+  standard browser mechanism: "Take photo" opens the phone's camera app
+  directly, no permission prompt, no app install. It requires HTTPS, which
+  Netlify already provides. Nothing to configure.
+
+ONE THING TO DO AFTER DEPLOYING
+
+  My testing signed out the admin session in the preview. Sign back in
+  with your admin email and password.
